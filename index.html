@@ -287,6 +287,18 @@
             gap: 20px;
         }
 
+        @media (max-width: 768px) {
+            .header-logos-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            /* On mobile, keep Logo 1 & 2 side-by-side or stacked?
+               User didn't specify, but column is safer for very small screens.
+               Let's keep them in a row for mobile if preferred, or just column as before but without the wrapper.
+            */
+        }
+
         .logos-row {
             display: flex;
             flex-direction: row;
@@ -297,28 +309,16 @@
         .future-logo-container {
             width: 140px;
             height: 140px;
-            border-radius: 24px;
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(8px);
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
             overflow: hidden;
         }
 
-        .future-logo-container:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
-        }
-
         .future-logo-img {
-            width: 100px;
-            height: 100px;
+            width: 150px;
+            height: 150px;
             object-fit: contain;
-            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
-            transition: transform 0.3s ease;
         }
 
         .header .year-badge {
@@ -889,15 +889,9 @@
         <!-- Header -->
         <header class="header">
             <div class="header-logos-container">
-                <div class="logos-row">
-                    <div class="future-logo-container">
-                        <img src="Gemini_Generated_Image_fml7qefml7qefml7-removebg-preview.png" alt="Logo 1"
-                            class="future-logo-img">
-                    </div>
-                    <div class="future-logo-container">
-                        <img src="Gemini_Generated_Image_m0fpuwm0fpuwm0fp-removebg-preview.png" alt="Logo 2"
-                            class="future-logo-img" style="transform: scale(1.2);">
-                    </div>
+                <div class="future-logo-container">
+                    <img src="Gemini_Generated_Image_fml7qefml7qefml7-removebg-preview.png" alt="Logo 1"
+                        class="future-logo-img">
                 </div>
 
                 <div class="header-content">
@@ -906,6 +900,11 @@
                         <h1>Académie Régionale de l'Éducation et de la Formation de Souss-Massa</h1>
                         <h2 class="subtitle">Direction Provinciale Agadir-Ida-Ou-Tanane</h2>
                     </div>
+                </div>
+
+                <div class="future-logo-container">
+                    <img src="Gemini_Generated_Image_m0fpuwm0fpuwm0fp-removebg-preview.png" alt="Logo 2"
+                        class="future-logo-img" style="transform: scale(1.2);">
                 </div>
             </div>
             <div class="year-badge">
@@ -929,35 +928,93 @@
                         </div>
                     </div>
 
-                    <div class="stat-highlight" style="margin-top: 30px; margin-bottom: 30px;">
-                        <div class="stat-number" style="font-size: 4rem;">87</div>
-                        <div class="stat-label" style="font-size: 1.1rem; margin-top: 10px;">Élèves total (40 Garçons /
-                            47 Filles)
+
+                    <div style="display: flex; flex-direction: column; gap: 15px; margin-bottom: 30px;">
+                        <!-- GMP Card -->
+                        <div style="background: linear-gradient(135deg, var(--navy-blue) 0%, #2a4a7f 100%); border-radius: 14px; padding: 22px 24px; color: var(--white); position: relative; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: default;"
+                            onmouseenter="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 12px 30px rgba(26,54,93,0.35)'"
+                            onmouseleave="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                            <div
+                                style="position: absolute; right: -10px; top: -10px; font-size: 5rem; opacity: 0.08; color: white;">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
+                                        <i class="fas fa-cogs" style="font-size: 1.1rem; opacity: 0.85;"></i>
+                                        <span style="font-weight: 700; font-size: 1.05rem; letter-spacing: 0.3px;">Génie
+                                            Mécanique et productique (GMP)</span>
+                                    </div>
+                                    <span style="font-size: 0.8rem; opacity: 0.75;">
+                                        <i class="fas fa-male" style="margin-right: 4px;"></i>32 Garçons
+                                        <span style="margin: 0 6px; opacity: 0.4;">|</span>
+                                        <i class="fas fa-female" style="margin-right: 4px;"></i>11 Filles
+                                    </span>
+                                </div>
+                                <div style="text-align: center;">
+                                    <div
+                                        style="font-size: 2.4rem; font-weight: 800; line-height: 1; color: var(--gold);">
+                                        43</div>
+                                    <div
+                                        style="font-size: 0.7rem; opacity: 0.7; margin-top: 4px; text-transform: uppercase; letter-spacing: 1px;">
+                                        élèves</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- MT Card -->
+                        <div style="background: linear-gradient(135deg, var(--gold) 0%, #c4933d 100%); border-radius: 14px; padding: 22px 24px; color: var(--dark-navy); position: relative; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: default;"
+                            onmouseenter="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 12px 30px rgba(212,168,83,0.35)'"
+                            onmouseleave="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                            <div
+                                style="position: absolute; right: -10px; top: -10px; font-size: 5rem; opacity: 0.08; color: var(--dark-navy);">
+                                <i class="fas fa-suitcase-rolling"></i>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
+                                        <i class="fas fa-suitcase-rolling" style="font-size: 1.1rem; opacity: 0.7;"></i>
+                                        <span
+                                            style="font-weight: 700; font-size: 1.05rem; letter-spacing: 0.3px;">Management
+                                            Touristique (MT)</span>
+                                    </div>
+                                    <span style="font-size: 0.8rem; opacity: 0.6;">
+                                        <i class="fas fa-male" style="margin-right: 4px;"></i>8 Garçons
+                                        <span style="margin: 0 6px; opacity: 0.4;">|</span>
+                                        <i class="fas fa-female" style="margin-right: 4px;"></i>36 Filles
+                                    </span>
+                                </div>
+                                <div style="text-align: center;">
+                                    <div
+                                        style="font-size: 2.4rem; font-weight: 800; line-height: 1; color: var(--white);">
+                                        44</div>
+                                    <div
+                                        style="font-size: 0.7rem; opacity: 0.55; margin-top: 4px; text-transform: uppercase; letter-spacing: 1px;">
+                                        élèves</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="level-stats" style="margin-bottom: 30px;">
+                    <!-- Additional Info from JSON -->
+                    <div class="level-stats">
                         <div class="level-item"
-                            style="padding: 15px 20px; font-size: 1.05rem; margin-bottom: 15px; align-items: center;">
-                            <span class="level-name" style="line-height: 1.3; padding-right: 10px;">Génie Mécanique
-                                (GMP)</span>
-                            <div style="text-align: right;">
-                                <span class="level-value" style="display: block; line-height: 1;">43</span>
-                                <span
-                                    style="font-size: 0.75rem; font-weight: normal; color: var(--text-light); white-space: nowrap; display: block; margin-top: 6px;">(32
-                                    Garçons / 11 Filles)</span>
-                            </div>
+                            style="padding: 12px 18px; font-size: 0.95rem; margin-bottom: 10px; align-items: center; border-right-color: var(--gold);">
+                            <span class="level-name" style="line-height: 1.3;"><i class="fas fa-door-open"
+                                    style="margin-right: 8px; color: var(--gold);"></i>Nombre de classes</span>
+                            <span class="level-value" style="color: var(--navy-blue);">4</span>
                         </div>
-                        <div class="level-item highlight"
-                            style="padding: 15px 20px; font-size: 1.05rem; margin-bottom: 15px; align-items: center;">
-                            <span class="level-name" style="line-height: 1.3; padding-right: 10px;">Management
-                                Touristique (MT)</span>
-                            <div style="text-align: right;">
-                                <span class="level-value" style="display: block; line-height: 1;">44</span>
-                                <span
-                                    style="font-size: 0.75rem; font-weight: normal; color: var(--text-light); white-space: nowrap; display: block; margin-top: 6px;">(8
-                                    Garçons / 36 Filles)</span>
-                            </div>
+                        <div class="level-item"
+                            style="padding: 12px 18px; font-size: 0.95rem; margin-bottom: 10px; align-items: center; border-right-color: var(--turquoise);">
+                            <span class="level-name" style="line-height: 1.3;"><i class="fas fa-chalkboard-teacher"
+                                    style="margin-right: 8px; color: var(--turquoise);"></i>Nombre de profs</span>
+                            <span class="level-value" style="color: var(--navy-blue);">15</span>
+                        </div>
+                        <div class="level-item"
+                            style="padding: 12px 18px; font-size: 0.95rem; align-items: center; border-right-color: var(--navy-blue);">
+                            <span class="level-name" style="line-height: 1.3;"><i class="fas fa-school"
+                                    style="margin-right: 8px; color: var(--navy-blue);"></i>Salles</span>
+                            <span class="level-value" style="color: var(--navy-blue);">5 + atelier</span>
                         </div>
                     </div>
 
@@ -978,25 +1035,29 @@
                     </div>
 
                     <div class="stat-highlight">
-                        <div class="success-rate-large">96,5%</div>
-                        <div class="stat-label">Taux de réussite global</div>
+                        <div class="success-rate-large">87</div>
+                        <div class="stat-label">Total élèves réussis</div>
                         <div style="margin-top: 10px; color: var(--success-green); font-weight: 600;">
-                            <i class="fas fa-check-circle"></i> 466 élèves ont obtenu leur moyenne
+                            <i class="fas fa-check-circle"></i> 81 Garçons / 46 Filles
                         </div>
                     </div>
 
                     <div class="level-stats">
                         <div class="level-item success">
-                            <span class="level-name">Tronc Commun</span>
-                            <span class="level-value" style="color: var(--success-green);">99%</span>
+                            <span class="level-name">1ère Année GMP</span>
+                            <span class="level-value" style="color: var(--success-green);">33</span>
                         </div>
                         <div class="level-item success">
-                            <span class="level-name">1ère Année Bac</span>
-                            <span class="level-value" style="color: var(--gold);">93,5%</span>
+                            <span class="level-name">1ère Année GT</span>
+                            <span class="level-value" style="color: var(--gold);">46</span>
                         </div>
                         <div class="level-item success highlight">
-                            <span class="level-name">2ème Année Bac</span>
-                            <span class="level-value" style="color: var(--success-green);">97,4%</span>
+                            <span class="level-name">2ème Année GT</span>
+                            <span class="level-value" style="color: var(--success-green);">32</span>
+                        </div>
+                        <div class="level-item success">
+                            <span class="level-name">2ème Année GMP</span>
+                            <span class="level-value" style="color: var(--turquoise);">16</span>
                         </div>
                     </div>
 
@@ -1016,9 +1077,7 @@
                         </div>
                     </div>
 
-                    <p style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 15px; line-height: 1.5;">
-                        Analyse de la performance des filières techniques spécialisées
-                    </p>
+
 
                     <div class="program-highlight">
                         <div class="program-name">
@@ -1040,7 +1099,27 @@
                             <i class="fas fa-arrow-up"></i> Retour à 100% en 25/26 (vs 86% en 24/25)
                         </div>
                     </div>
+                    <!-- Overall Success Summary -->
+                    <div
+                        style="background: linear-gradient(135deg, rgba(26,54,93,0.06) 0%, rgba(32,178,170,0.06) 100%); border-radius: 14px; padding: 20px; margin-bottom: 15px; border: 1px solid rgba(26,54,93,0.08);">
+                        <div style="text-align: center; margin-bottom: 14px;">
+                            <div
+                                style="display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, var(--success-green), #2f855a); color: white; padding: 6px 18px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.5px;">
+                                <i class="fas fa-medal"></i> Taux de réussite global
+                            </div>
+                            <div
+                                style="font-size: 3rem; font-weight: 800; margin-top: 8px; background: linear-gradient(135deg, var(--gold), var(--turquoise)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+                                100%</div>
+                        </div>
 
+                        <div
+                            style="text-align: center; margin-top: 14px; padding-top: 12px; border-top: 1px dashed rgba(26,54,93,0.12);">
+                            <span style="font-size: 0.8rem; color: var(--success-green); font-weight: 600;">
+                                <i class="fas fa-arrow-trend-up" style="margin-right: 4px;"></i>
+                                Progression constante sur 3 ans
+                            </span>
+                        </div>
+                    </div>
                     <div class="chart-container">
                         <canvas id="lineChart"></canvas>
                     </div>
@@ -1147,18 +1226,18 @@
         new Chart(barCtx, {
             type: 'bar',
             data: {
-                labels: ['Tronc Commun', '1ère Année Bac', '2ème Année Bac'],
+                labels: ['1ère Année GMP', '1ère Année GT', '2ème Année GT', '2ème Année GMP'],
                 datasets: [
                     {
-                        label: 'Total Élèves',
-                        data: [96, 155, 232],
+                        label: 'Garçons',
+                        data: [25, 25, 17, 14],
                         backgroundColor: navyBlue,
                         borderRadius: 6,
                         barPercentage: 0.7
                     },
                     {
-                        label: 'Élèves Reussis',
-                        data: [95, 145, 226],
+                        label: 'Filles',
+                        data: [8, 21, 15, 2],
                         backgroundColor: turquoise,
                         borderRadius: 6,
                         barPercentage: 0.7
@@ -1180,7 +1259,7 @@
                     },
                     title: {
                         display: true,
-                        text: 'Total vs Reussis par niveau',
+                        text: 'Élèves réussis par filière',
                         font: { size: 13, weight: '600' },
                         color: navyBlue,
                         padding: { bottom: 10 }

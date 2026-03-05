@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Réussite BTS - Card 3</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --navy-blue: #1a365d;
+            --dark-navy: #0d1f3c;
+            --gold: #d4a853;
+            --turquoise: #20b2aa;
+            --white: #ffffff;
+            --text-light: #718096;
+            --success-green: #38a169;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .column {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 450px;
+            width: 100%;
+            position: relative;
+        }
+
+        .column-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--navy-blue);
+        }
+
+        .column-header i {
+            font-size: 1.8rem;
+            color: var(--navy-blue);
+        }
+
+        .column-header h2 {
+            font-size: 1.1rem;
+            color: var(--navy-blue);
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .column-header .arabic {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .icon-decoration {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 4rem;
+            opacity: 0.1;
+            color: var(--navy-blue);
+        }
+
+        .program-highlight {
+            background: linear-gradient(135deg, var(--navy-blue) 0%, var(--dark-navy) 100%);
+            color: var(--white);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+
+        .program-name {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .program-rate {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--gold);
+        }
+
+        .program-desc,
+        .program-comparison {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 8px;
+        }
+
+        .program-gmp {
+            background: linear-gradient(135deg, var(--turquoise) 0%, #008b8b 100%);
+            color: var(--white);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+
+        .program-gmp .program-rate {
+            color: var(--white);
+        }
+
+        .chart-container {
+            position: relative;
+            height: 220px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="column">
+        <i class="fas fa-certificate icon-decoration"></i>
+        <div class="column-header">
+            <i class="fas fa-percentage"></i>
+            <div>
+                <h2>Réussite en BTS</h2>
+                <div class="arabic">نسبة النجاح في شهادة التقني العالي</div>
+            </div>
+        </div>
+
+        <div class="program-highlight">
+            <div class="program-name"><i class="fas fa-suitcase"></i> Management Touristique (MT)</div>
+            <div class="program-rate">100%</div>
+            <div class="program-desc"><i class="fas fa-star" style="color: var(--gold);"></i> Excellence parfaite sur 3
+                ans (23/24, 24/25, 25/26)</div>
+        </div>
+
+        <div class="program-gmp">
+            <div class="program-name"><i class="fas fa-cogs"></i> Génie Mécanique et Productique (GMP)</div>
+            <div class="program-rate">100%</div>
+            <div class="program-comparison"><i class="fas fa-arrow-up"></i> Retour à 100% en 25/26 (vs 86% en 24/25)
+            </div>
+        </div>
+
+        <!-- Overall Success Summary -->
+        <div
+            style="background: linear-gradient(135deg, rgba(26,54,93,0.06) 0%, rgba(32,178,170,0.06) 100%); border-radius: 14px; padding: 20px; margin-bottom: 15px; border: 1px solid rgba(26,54,93,0.08);">
+            <div style="text-align: center; margin-bottom: 14px;">
+                <div
+                    style="display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, var(--success-green), #2f855a); color: white; padding: 6px 18px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.5px;">
+                    <i class="fas fa-medal"></i> Taux de réussite global
+                </div>
+                <div
+                    style="font-size: 3rem; font-weight: 800; margin-top: 8px; background: linear-gradient(135deg, var(--gold), var(--turquoise)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+                    100%</div>
+            </div>
+            <div
+                style="text-align: center; margin-top: 14px; padding-top: 12px; border-top: 1px dashed rgba(26,54,93,0.12);">
+                <span style="font-size: 0.8rem; color: var(--success-green); font-weight: 600;">
+                    <i class="fas fa-arrow-trend-up" style="margin-right: 4px;"></i> Progression constante sur 3 ans
+                </span>
+            </div>
+        </div>
+
+        <div class="chart-container">
+            <canvas id="lineChart"></canvas>
+        </div>
+    </div>
+
+    <script>
+        const navyBlue = '#1a365d';
+        const gold = '#d4a853';
+        const turquoise = '#20b2aa';
+        const lineCtx = document.getElementById('lineChart').getContext('2d');
+        new Chart(lineCtx, {
+            type: 'line',
+            data: {
+                labels: ['2023', '2024', '2025', '2026'],
+                datasets: [
+                    { label: 'MT', data: [100, 100, 100, 100], borderColor: gold, backgroundColor: 'rgba(212, 168, 83, 0.1)', borderWidth: 4, fill: true, tension: 0.1, pointRadius: 6 },
+                    { label: 'GMP', data: [92, 94, 86, 100], borderColor: turquoise, backgroundColor: 'rgba(32, 178, 170, 0.1)', borderWidth: 4, fill: true, tension: 0.3, pointRadius: 6 }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'bottom', labels: { usePointStyle: true } },
+                    title: { display: true, text: 'Evolution du taux de reussite (%)', font: { size: 13, weight: '600' }, color: navyBlue }
+                },
+                scales: {
+                    y: { min: 80, max: 105, ticks: { callback: function (v) { return v + '%'; } } }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
