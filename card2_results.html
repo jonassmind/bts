@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Résultats BTS - Card 2</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --navy-blue: #1a365d;
+            --dark-navy: #0d1f3c;
+            --gold: #d4a853;
+            --turquoise: #20b2aa;
+            --white: #ffffff;
+            --text-light: #718096;
+            --success-green: #38a169;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .column {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 450px;
+            width: 100%;
+            position: relative;
+        }
+
+        .column-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--navy-blue);
+        }
+
+        .column-header i {
+            font-size: 1.8rem;
+            color: var(--navy-blue);
+        }
+
+        .column-header h2 {
+            font-size: 1.1rem;
+            color: var(--navy-blue);
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .column-header .arabic {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .icon-decoration {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 4rem;
+            opacity: 0.1;
+            color: var(--navy-blue);
+        }
+
+        .stat-highlight {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .success-rate-large {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--turquoise) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-top: 5px;
+        }
+
+        .level-stats {
+            margin: 20px 0;
+        }
+
+        .level-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            background: #f8fafc;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            border-right: 4px solid var(--navy-blue);
+        }
+
+        .level-item.success {
+            border-right-color: var(--success-green);
+        }
+
+        .level-item.highlight {
+            border-right-color: var(--gold);
+            background: linear-gradient(135deg, rgba(212, 168, 83, 0.1) 0%, rgba(32, 178, 170, 0.1) 100%);
+        }
+
+        .level-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .level-value {
+            font-weight: 700;
+            color: var(--success-green);
+        }
+
+        .chart-container {
+            position: relative;
+            height: 220px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="column">
+        <i class="fas fa-award icon-decoration"></i>
+        <div class="column-header">
+            <i class="fas fa-trophy"></i>
+            <div>
+                <h2>Résultats - Session 2025/2026</h2>
+                <div class="arabic">نتائج الدورة الأولى</div>
+            </div>
+        </div>
+
+        <div class="stat-highlight">
+            <div class="success-rate-large">87</div>
+            <div class="stat-label">Total élèves réussis</div>
+            <div style="margin-top: 10px; color: var(--success-green); font-weight: 600;">
+                <i class="fas fa-check-circle"></i> 81 Garçons / 46 Filles
+            </div>
+        </div>
+
+        <div class="level-stats">
+            <div class="level-item success">
+                <span class="level-name">1ère Année GMP</span>
+                <span class="level-value">33</span>
+            </div>
+            <div class="level-item success">
+                <span class="level-name">1ère Année GT</span>
+                <span class="level-value" style="color: var(--gold);">46</span>
+            </div>
+            <div class="level-item success highlight">
+                <span class="level-name">2ème Année GT</span>
+                <span class="level-value">32</span>
+            </div>
+            <div class="level-item success">
+                <span class="level-name">2ème Année GMP</span>
+                <span class="level-value" style="color: var(--turquoise);">16</span>
+            </div>
+        </div>
+
+        <div class="chart-container">
+            <canvas id="barChart"></canvas>
+        </div>
+    </div>
+
+    <script>
+        const navyBlue = '#1a365d';
+        const turquoise = '#20b2aa';
+        const barCtx = document.getElementById('barChart').getContext('2d');
+        new Chart(barCtx, {
+            type: 'bar',
+            data: {
+                labels: ['1ère Année GMP', '1ère Année GT', '2ème Année GT', '2ème Année GMP'],
+                datasets: [
+                    { label: 'Garçons', data: [25, 25, 17, 14], backgroundColor: navyBlue, borderRadius: 6 },
+                    { label: 'Filles', data: [8, 21, 15, 2], backgroundColor: turquoise, borderRadius: 6 }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'bottom', labels: { usePointStyle: true, pointStyle: 'rect' } },
+                    title: { display: true, text: 'Élèves réussis par filière', font: { size: 13, weight: '600' }, color: navyBlue }
+                },
+                scales: {
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

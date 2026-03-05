@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistiques BTS - Card 1</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --navy-blue: #1a365d;
+            --dark-navy: #0d1f3c;
+            --gold: #d4a853;
+            --turquoise: #20b2aa;
+            --light-bg: #f8fafc;
+            --white: #ffffff;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --success-green: #38a169;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .column {
+            background: var(--light-bg);
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 450px;
+            width: 100%;
+            position: relative;
+            background: var(--white);
+        }
+
+        .column-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--navy-blue);
+        }
+
+        .column-header i {
+            font-size: 1.8rem;
+            color: var(--navy-blue);
+        }
+
+        .column-header h2 {
+            font-size: 1.1rem;
+            color: var(--navy-blue);
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .column-header .arabic {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .icon-decoration {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 4rem;
+            opacity: 0.1;
+            color: var(--navy-blue);
+        }
+
+        .level-stats {
+            margin: 20px 0;
+        }
+
+        .level-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            background: var(--white);
+            border-radius: 10px;
+            margin-bottom: 10px;
+            border-right: 4px solid var(--navy-blue);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .level-item .level-name {
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: 0.9rem;
+        }
+
+        .level-item .level-value {
+            font-weight: 700;
+            color: var(--navy-blue);
+        }
+
+        .chart-container {
+            position: relative;
+            height: 250px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="column">
+        <i class="fas fa-users icon-decoration"></i>
+        <div class="column-header">
+            <i class="fas fa-chart-pie"></i>
+            <div>
+                <h2>Statistiques du BTS</h2>
+                <div class="arabic">إحصائيات طلبة التقني العالي</div>
+            </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 15px; margin-bottom: 30px;">
+            <!-- GMP Card -->
+            <div style="background: linear-gradient(135deg, var(--navy-blue) 0%, #2a4a7f 100%); border-radius: 14px; padding: 22px 24px; color: var(--white); position: relative; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: default;"
+                onmouseenter="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 12px 30px rgba(26,54,93,0.35)'"
+                onmouseleave="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                <div
+                    style="position: absolute; right: -10px; top: -10px; font-size: 5rem; opacity: 0.08; color: white;">
+                    <i class="fas fa-cogs"></i>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
+                            <i class="fas fa-cogs" style="font-size: 1.1rem; opacity: 0.85;"></i>
+                            <span style="font-weight: 700; font-size: 1.05rem; letter-spacing: 0.3px;">Génie Mécanique
+                                et productique (GMP)</span>
+                        </div>
+                        <span style="font-size: 0.8rem; opacity: 0.75;">
+                            <i class="fas fa-male" style="margin-right: 4px;"></i>32 Garçons
+                            <span style="margin: 0 6px; opacity: 0.4;">|</span>
+                            <i class="fas fa-female" style="margin-right: 4px;"></i>11 Filles
+                        </span>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 2.4rem; font-weight: 800; line-height: 1; color: var(--gold);">43</div>
+                        <div
+                            style="font-size: 0.7rem; opacity: 0.7; margin-top: 4px; text-transform: uppercase; letter-spacing: 1px;">
+                            élèves</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MT Card -->
+            <div style="background: linear-gradient(135deg, var(--gold) 0%, #c4933d 100%); border-radius: 14px; padding: 22px 24px; color: var(--dark-navy); position: relative; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: default;"
+                onmouseenter="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 12px 30px rgba(212,168,83,0.35)'"
+                onmouseleave="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                <div
+                    style="position: absolute; right: -10px; top: -10px; font-size: 5rem; opacity: 0.08; color: var(--dark-navy);">
+                    <i class="fas fa-suitcase-rolling"></i>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
+                            <i class="fas fa-suitcase-rolling" style="font-size: 1.1rem; opacity: 0.7;"></i>
+                            <span style="font-weight: 700; font-size: 1.05rem; letter-spacing: 0.3px;">Management
+                                Touristique (MT)</span>
+                        </div>
+                        <span style="font-size: 0.8rem; opacity: 0.6;">
+                            <i class="fas fa-male" style="margin-right: 4px;"></i>8 Garçons
+                            <span style="margin: 0 6px; opacity: 0.4;">|</span>
+                            <i class="fas fa-female" style="margin-right: 4px;"></i>36 Filles
+                        </span>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 2.4rem; font-weight: 800; line-height: 1; color: var(--white);">44</div>
+                        <div
+                            style="font-size: 0.7rem; opacity: 0.55; margin-top: 4px; text-transform: uppercase; letter-spacing: 1px;">
+                            élèves</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="level-stats">
+            <div class="level-item" style="border-right-color: var(--gold);">
+                <span class="level-name"><i class="fas fa-door-open"
+                        style="margin-right: 8px; color: var(--gold);"></i>Nombre de classes</span>
+                <span class="level-value">4</span>
+            </div>
+            <div class="level-item" style="border-right-color: var(--turquoise);">
+                <span class="level-name"><i class="fas fa-chalkboard-teacher"
+                        style="margin-right: 8px; color: var(--turquoise);"></i>Nombre de profs</span>
+                <span class="level-value">15</span>
+            </div>
+            <div class="level-item" style="border-right-color: var(--navy-blue);">
+                <span class="level-name"><i class="fas fa-school"
+                        style="margin-right: 8px; color: var(--navy-blue);"></i>Salles</span>
+                <span class="level-value">5 + atelier</span>
+            </div>
+        </div>
+
+        <div class="chart-container">
+            <canvas id="pieChart"></canvas>
+        </div>
+    </div>
+
+    <script>
+        const navyBlue = '#1a365d';
+        const turquoise = '#20b2aa';
+        const darkBlue = '#2c5282';
+
+        const pieCtx = document.getElementById('pieChart').getContext('2d');
+        new Chart(pieCtx, {
+            type: 'bar',
+            data: {
+                labels: ['GMP', 'MT'],
+                datasets: [
+                    {
+                        label: 'Garçons',
+                        data: [32, 8],
+                        backgroundColor: darkBlue,
+                        borderRadius: 4,
+                        barPercentage: 0.5
+                    },
+                    {
+                        label: 'Filles',
+                        data: [11, 36],
+                        backgroundColor: turquoise,
+                        borderRadius: 4,
+                        barPercentage: 0.5
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'bottom', labels: { padding: 10, usePointStyle: true } },
+                    title: { display: true, text: 'Répartition Genre par Filière', font: { size: 14, weight: '600' }, color: navyBlue }
+                },
+                scales: {
+                    x: { stacked: true },
+                    y: { stacked: true, beginAtZero: true }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
