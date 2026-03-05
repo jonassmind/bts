@@ -287,6 +287,13 @@
             gap: 20px;
         }
 
+        .logos-row {
+            display: flex;
+            flex-direction: row;
+            gap: 15px;
+            align-items: center;
+        }
+
         .future-logo-container {
             width: 140px;
             height: 140px;
@@ -307,8 +314,8 @@
         }
 
         .future-logo-img {
-            width: 120px;
-            height: 120px;
+            width: 100px;
+            height: 100px;
             object-fit: contain;
             filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
             transition: transform 0.3s ease;
@@ -633,9 +640,22 @@
             }
 
             .header-logos-container {
-                flex-direction: row;
-                justify-content: space-between;
-                gap: 10px;
+                flex-direction: column;
+                align-items: center;
+                gap: 12px;
+            }
+
+            .header-content {
+                order: 1;
+                flex: unset;
+                width: 100%;
+                gap: 8px;
+            }
+
+            .logos-row {
+                order: 2;
+                justify-content: center;
+                gap: 20px;
             }
 
             .future-logo-container {
@@ -645,14 +665,25 @@
                 border-radius: 16px;
             }
 
-            .future-logo-img {
-                width: 65px;
-                height: 65px;
+            /* Put the two logos side by side at the bottom */
+            .header-logos-container {
+                flex-direction: column;
+                align-items: center;
             }
 
-            .header-content {
-                flex: 1;
-                gap: 8px;
+            .header-logos-container .future-logo-container:first-child,
+            .header-logos-container .future-logo-container:last-child {
+                position: static;
+            }
+
+            /* Row of logos at bottom */
+            .header-logos-bottom-row {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                gap: 20px;
+                width: 100%;
+                order: 2;
             }
 
             .header-logo {
@@ -913,9 +944,15 @@
         <!-- Header -->
         <header class="header">
             <div class="header-logos-container">
-                <div class="future-logo-container">
-                    <img src="Gemini_Generated_Image_fml7qefml7qefml7-removebg-preview.png" alt="Logo 1"
-                        class="future-logo-img">
+                <div class="logos-row">
+                    <div class="future-logo-container">
+                        <img src="Gemini_Generated_Image_fml7qefml7qefml7-removebg-preview.png" alt="Logo 1"
+                            class="future-logo-img">
+                    </div>
+                    <div class="future-logo-container">
+                        <img src="Gemini_Generated_Image_m0fpuwm0fpuwm0fp-removebg-preview.png" alt="Logo 2"
+                            class="future-logo-img" style="transform: scale(1.2);">
+                    </div>
                 </div>
 
                 <div class="header-content">
@@ -924,11 +961,6 @@
                         <h1>Académie Régionale de l'Éducation et de la Formation de Souss-Massa</h1>
                         <h2 class="subtitle">Direction Provinciale Agadir-Ida-Ou-Tanane</h2>
                     </div>
-                </div>
-
-                <div class="future-logo-container">
-                    <img src="Gemini_Generated_Image_m0fpuwm0fpuwm0fp-removebg-preview.png" alt="Logo 2"
-                        class="future-logo-img" style="transform: scale(1.4);">
                 </div>
             </div>
             <div class="year-badge">
